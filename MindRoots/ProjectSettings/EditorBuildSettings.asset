@@ -4,5 +4,12 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
-  m_configObjects: {}
+  m_Scenes:
+  - enabled: 1
+    path: Assets/KekTank/Scenes/MainScreen.unity
+    guid: 34e03e27eb2f5b4489847a2f6cbedb3f
+  - enabled: 1
+    path: Assets/KekTank/Scenes/Scene_GameTest.unity
+    guid: 0e0b965d8fa33ff4391fe0920c496db4
+  m_configObjects:
+    com.unity.input.settings: {fileID: 11400000, guid: 410eda4f95f5e7a4698b1a1b9ec2f80c, type: 2}

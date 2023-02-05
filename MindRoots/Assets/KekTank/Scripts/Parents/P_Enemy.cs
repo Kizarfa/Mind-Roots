@@ -32,8 +32,8 @@ public abstract class P_Enemy : MonoBehaviour
     [Header("Machine Parts")]
     public Collider HitBox = null;
     public Collider RoamArea = null;
-    NavMeshAgent agent = null;
-    Rigidbody rig = null;
+    public NavMeshAgent agent = null;
+    public Rigidbody rig = null;
 
     private void OnEnable()
     {
@@ -57,7 +57,7 @@ public abstract class P_Enemy : MonoBehaviour
                     RandomRoam();
                     break;
                 case AIstates.Follow:
-                    FollowTarget(TargetToFollow);
+                    FollowTarget();
                     break;
                 case AIstates.Attack:
                     Attacking();
@@ -85,11 +85,19 @@ public abstract class P_Enemy : MonoBehaviour
         if (Mindlessness < 0)
         {
             Mindlessness = 0;
+            rig.velocity = Vector3.zero;
         }
     }
 
     public virtual void RandomRoam()
     {
+        if (transform.parent.GetComponent<scr_ArenaStarter>().PlayerIsInside)
+        {
+            State = AIstates.Follow;
+            TargetToFollow = FindObjectOfType<scr_PlayerMachine>().gameObject.transform;
+            return;
+        }
+
         if (Vector3.Distance(agent.destination, transform.position) <= 5)
         {
             Bounds ra = RoamArea.bounds;
@@ -102,24 +110,40 @@ public abstract class P_Enemy : MonoBehaviour
             NavMeshPath p = new NavMeshPath();
             if (agent.CalculatePath(RPos, p)) agent.path = p;
         }
+
     }
 
-    public virtual void FollowTarget(Transform Target)
+    public virtual void FollowTarget()
     {
-        NavMeshPath p = new NavMeshPath();
-        agent.CalculatePath(Target.position, p);
+        if (Vector3.Distance(agent.destination, TargetToFollow.position) > 0)
+        {
+            NavMeshPath p = new NavMeshPath();
+            if (agent.CalculatePath(TargetToFollow.position, p)) agent.path = p;
+        }
+
     }
 
-    public virtual void TakeHit(int Damage, Vector3 HitPos, int pushStrength = 10, int confuse = 1)
+    public virtual void TakeHit(int Damage, Vector3 HitPos, int pushStrength = 200, int confuse = 1)
     {
         Health -= Damage;
         Mindlessness = confuse;
 
         rig.AddExplosionForce(pushStrength, transform.position + (HitPos - transform.position).normalized, 5);
+
+        if (Health <= 0) Death();
     }
 
     public virtual void Attacking()
     {
+        if (HitBox.gameObject.activeInHierarchy) 
+        {
+            HitBox.gameObject.SetActive(false);
+            State = AIstates.Roam;
+        }
+        else
+        {
+            HitBox.gameObject.SetActive(true);
+        }
 
     }
 
@@ -145,7 +169,9 @@ public abstract class P_Enemy : MonoBehaviour
 
     public virtual void Death()
     {
+        transform.parent.GetComponent<scr_ArenaStarter>().RotDecrease();
 
+        Destroy(gameObject);
     }
 
 }
