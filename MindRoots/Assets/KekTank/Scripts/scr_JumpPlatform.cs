@@ -7,6 +7,7 @@ public class scr_JumpPlatform : MonoBehaviour
     public scr_JumpPlatform Partner;
     public AnimationCurve JumpCurve;
 
+    public float Yoffset = 2;
     public float jumpTime = 0;
     public float jumpHigh = 5;
     public float AirTime = 2;
@@ -53,7 +54,7 @@ public class scr_JumpPlatform : MonoBehaviour
         jumpTime += Time.deltaTime / AirTime;
         if (jumpTime > 1) jumpTime = 1;
 
-        Vector3 diff = Vector3.Lerp(transform.position, Partner.transform.position, jumpTime);
+        Vector3 diff = Vector3.Lerp(transform.position + (Vector3.up * Yoffset), Partner.transform.position + (Vector3.up * Yoffset), jumpTime);
 
         Transform plyr = FindObjectOfType<scr_PlayerMachine>().gameObject.transform;
         plyr.position = diff + new Vector3(0, JumpCurve.Evaluate(jumpTime) * jumpHigh, 0);

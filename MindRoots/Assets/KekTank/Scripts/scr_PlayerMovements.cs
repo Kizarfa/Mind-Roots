@@ -6,6 +6,7 @@ using UnityEngine.UIElements;
 public class scr_PlayerMovements : MonoBehaviour
 {
     public bool FreeToMove = true;
+    public Animator animator;
 
     [Header("Moving Parts")]
     public Transform MyEyes;
@@ -29,6 +30,10 @@ public class scr_PlayerMovements : MonoBehaviour
         {
             Move();
             Rotation();
+        }
+        else
+        {
+
         }
 
     }
@@ -55,6 +60,12 @@ public class scr_PlayerMovements : MonoBehaviour
             float speed = gameObject.GetComponent<scr_PlayerMachine>().speed;
             Rigidbody rig = transform.GetComponent<Rigidbody>();
             rig.velocity = ((transform.forward * Dikey * speed) + (MyEyes.right * Yatay * speed)) + new Vector3(0, rig.velocity.y, 0);
+
+            animator.SetBool("Moving", true);
+        }
+        else
+        {
+            animator.SetBool("Moving", false);
         }
     }
 }

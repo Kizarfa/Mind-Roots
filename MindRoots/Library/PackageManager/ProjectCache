@@ -5,16 +5,16 @@ m_ProjectFiles:
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 638111235434666217
-    m_Hash: 4218329119
+      ticks: 638111711950860258
+    m_Hash: 4284717723
   m_LockFileStatus:
     m_FilePath: C:/Users/canav/Documents/GitHub/Mind-Roots/MindRoots/Packages/packages-lock.json
     m_PathExists: 1
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 638111235434844234
-    m_Hash: 1219887578
+      ticks: 638111711950880261
+    m_Hash: 3874818669
 m_EmbeddedPackageManifests:
   m_ManifestsStatus: {}
 m_PackageAssets:

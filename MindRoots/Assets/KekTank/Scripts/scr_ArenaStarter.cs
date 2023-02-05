@@ -7,7 +7,7 @@ public class scr_ArenaStarter : MonoBehaviour
     public bool PlayerIsInside = false;
     public int ChildRots = 0;
 
-    public GameObject Neuron;
+    public GameObject[] NeuronParts;
     public Material RotMat;
     public Material CleanMat;
 
@@ -47,6 +47,9 @@ public class scr_ArenaStarter : MonoBehaviour
     public void Cleanup()
     {
         //temiz sinir hücresi ol
-        Neuron.GetComponent<Renderer>().sharedMaterial = CleanMat;
+        foreach(GameObject g in NeuronParts)
+        {
+            g.GetComponent<Renderer>().sharedMaterial = CleanMat;
+        }
     }
 }

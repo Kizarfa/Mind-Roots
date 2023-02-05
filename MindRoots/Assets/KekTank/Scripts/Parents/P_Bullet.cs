@@ -65,7 +65,7 @@ public class P_Bullet : MonoBehaviour
     {
         if (other.tag == "Enemy")
         {
-            other.GetComponent<P_Enemy>().TakeHit(Damage, HitPos);
+            other.GetComponent<P_Enemy>().TakeHit(Damage, transform.position);
         }
         else if (other.tag == "Player")
         {

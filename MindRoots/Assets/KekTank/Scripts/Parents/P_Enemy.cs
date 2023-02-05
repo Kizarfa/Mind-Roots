@@ -123,11 +123,12 @@ public abstract class P_Enemy : MonoBehaviour
 
     }
 
-    public virtual void TakeHit(int Damage, Vector3 HitPos, int pushStrength = 200, int confuse = 1)
+    public virtual void TakeHit(int Damage, Vector3 HitPos, int pushStrength = 500, int confuse = 1)
     {
         Health -= Damage;
         Mindlessness = confuse;
 
+        Debug.Log("Hit it!!");
         rig.AddExplosionForce(pushStrength, transform.position + (HitPos - transform.position).normalized, 5);
 
         if (Health <= 0) Death();
@@ -135,6 +136,8 @@ public abstract class P_Enemy : MonoBehaviour
 
     public virtual void Attacking()
     {
+        transform.LookAt(FindObjectOfType<scr_PlayerMachine>().gameObject.transform.position);
+
         if (HitBox.gameObject.activeInHierarchy) 
         {
             HitBox.gameObject.SetActive(false);

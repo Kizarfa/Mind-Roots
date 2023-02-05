@@ -1,9 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading;
 using UnityEngine;
 
 public class Enemy_Cageling : P_Enemy
 {
+    public GameObject bullet;
+
     [Header("Cageling Stats")]
     public float AttackRange = 10;
     public float AttackBetween = 1;
@@ -28,7 +31,19 @@ public class Enemy_Cageling : P_Enemy
     {
         if (waitingtoAttack == 0)
         {
-            base.Attacking();
+            Vector3 dir = FindObjectOfType<scr_PlayerMachine>().gameObject.transform.position - transform.position;
+
+            GameObject b = Instantiate(bullet);
+            b.transform.position = transform.position;
+
+            P_Bullet pb = b.GetComponent<P_Bullet>();
+            pb.Direction = dir;
+
+            b.GetComponent<Rigidbody>().velocity = dir * pb.Speed;
+
+            b.transform.LookAt(FindObjectOfType<scr_PlayerMachine>().Aim.position);
+            b.transform.Rotate(new Vector3(-90, 0, 0));
+
             waitingtoAttack = AttackBetween;
         }
         else

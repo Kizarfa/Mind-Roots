@@ -1,0 +1,61 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!319 &31900000
+AvatarMask:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Insancik
+  m_Mask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+  m_Elements:
+  - m_Path: 
+    m_Weight: 1
+  - m_Path: Armature
+    m_Weight: 1
+  - m_Path: Armature/Temel
+    m_Weight: 1
+  - m_Path: Armature/Temel/Omurga1
+    m_Weight: 1
+  - m_Path: Armature/Temel/Omurga1/Omurga2
+    m_Weight: 1
+  - m_Path: Armature/Temel/Omurga1/Omurga2/Omurga3
+    m_Weight: 1
+  - m_Path: Armature/Temel/Omurga1/Omurga2/Omurga3/Kalca.L
+    m_Weight: 1
+  - m_Path: Armature/Temel/Omurga1/Omurga2/Omurga3/Kalca.L/UstBacak.L
+    m_Weight: 1
+  - m_Path: Armature/Temel/Omurga1/Omurga2/Omurga3/Kalca.L/UstBacak.L/AltBacak.L
+    m_Weight: 1
+  - m_Path: Armature/Temel/Omurga1/Omurga2/Omurga3/Kalca.L/UstBacak.L/AltBacak.L/Ayak.L
+    m_Weight: 1
+  - m_Path: Armature/Temel/Omurga1/Omurga2/Omurga3/Kalca.R
+    m_Weight: 1
+  - m_Path: Armature/Temel/Omurga1/Omurga2/Omurga3/Kalca.R/UstBacak.R
+    m_Weight: 1
+  - m_Path: Armature/Temel/Omurga1/Omurga2/Omurga3/Kalca.R/UstBacak.R/AltBacak.R
+    m_Weight: 1
+  - m_Path: Armature/Temel/Omurga1/Omurga2/Omurga3/Kalca.R/UstBacak.R/AltBacak.R/Ayak.R
+    m_Weight: 1
+  - m_Path: Armature/Temel/Omuz.L
+    m_Weight: 1
+  - m_Path: Armature/Temel/Omuz.L/KolUst.L
+    m_Weight: 1
+  - m_Path: Armature/Temel/Omuz.L/KolUst.L/KolAlt.L
+    m_Weight: 1
+  - m_Path: Armature/Temel/Omuz.L/KolUst.L/KolAlt.L/El.L
+    m_Weight: 1
+  - m_Path: Armature/Temel/Omuz.R
+    m_Weight: 1
+  - m_Path: Armature/Temel/Omuz.R/KolUst.R
+    m_Weight: 1
+  - m_Path: Armature/Temel/Omuz.R/KolUst.R/KolAlt.R
+    m_Weight: 1
+  - m_Path: Armature/Temel/Omuz.R/KolUst.R/KolAlt.R/El.R
+    m_Weight: 1
+  - m_Path: Armature/Vucut.001
+    m_Weight: 1
+  - m_Path: Kiyamet
+    m_Weight: 1
+  - m_Path: Vucut
+    m_Weight: 1

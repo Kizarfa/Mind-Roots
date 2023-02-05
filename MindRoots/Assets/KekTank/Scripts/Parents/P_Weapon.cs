@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class P_Weapon : MonoBehaviour
 {
+    public AudioClip SoundOfFire;
+
     [Header("Weapon Stats")]
     public float Cooldown = 0.2f;
     float InBetweenBullets = 0;
@@ -31,6 +33,8 @@ public class P_Weapon : MonoBehaviour
         {
             if (Ammo > 0)
             {
+                GetComponent<AudioSource>().PlayOneShot(SoundOfFire);
+
                 if (HitScan)
                 {
                     FireHitScan();
@@ -61,6 +65,9 @@ public class P_Weapon : MonoBehaviour
         pb.Direction = dir;
 
         b.GetComponent<Rigidbody>().velocity = dir * pb.Speed;
+
+        b.transform.LookAt(FindObjectOfType<scr_PlayerMachine>().Aim.position);
+        b.transform.Rotate(new Vector3(-90, 0, 0));
 
         //Debug.Log("Mermi atmalýydý");
 
